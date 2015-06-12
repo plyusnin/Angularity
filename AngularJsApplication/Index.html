@@ -3,22 +3,40 @@
     <title>Angular test</title>
     <script src="Scripts/angular.js"></script>
     <script src="app.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-controller="MainCtrl">
 <div class="container">
-    <div>
-        Hello, {{userDetails.login}} (<b>{{userDetails.name}}</b>)!
+    <div class="page-header">
+        <h1>Игрища с Angular.js <small>Проверяя всякое</small></h1>
     </div>
-    <div>
-        <input type="text" tooltip="Tooltip on foo" ng-model="userDetails.login">
-    </div>
-    <div>
-        <ul>
-            <li ng-repeat="program in programs">
-                <b>{{program.name}}</b> (v.{{program.version}})
-            </li>
-        </ul>
+    <div class="row">
+        <div class="col-md-4">
+            <div div class="list-group">
+                <a href="#" class="list-group-item" ng-repeat="program in programs">
+                    <span class="badge">{{program.version}}</span>
+                    <h4 class="list-group-item-heading">{{program.name}}</h4>
+                    <p class="list-group-item-text">{{program.description}}</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                Hello, {{userDetails.login}} (<b>{{userDetails.name}}</b>)!
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="loginEdit">Логин</label>
+                    <input type="text" class="form-control" id="loginEdit" placeholder="Введите логин" ng-model="userDetails.login">
+                </div>
+                <div class="form-group">
+                    <label for="nameEdit">Имя</label>
+                    <input type="text" class="form-control" id="nameEdit" placeholder="Введите имя" ng-model="userDetails.name">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
 </body>
