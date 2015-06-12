@@ -9,47 +9,40 @@
 <body ng-controller="MainCtrl">
 <div class="container">
     <div class="page-header">
-        <h1>Игрища с Angular.js <small>Проверяя всякое</small></h1>
+        <h1>Игрища с Angular.js <small>Проверяя всякое</small>
+        </h1>
     </div>
     <div class="row">
         <div class="col-md-4">
+            <p>
+                <input type="text" class="form-control" placeholder="Поиск программы" ng-model="programFilter">
+            </p>
             <div div class="list-group">
-                <a href="#" class="list-group-item" ng-repeat="program in programs" ng-class="{active: selectedProgram==program}" ng-click="selectProgram(program);">
+                <a href="#" class="list-group-item" ng-repeat="program in programs | filter:programFilter" ng-class="{active: selectedProgram==program}" ng-click="selectProgram(program);">
                     <span class="badge">{{program.version}}</span>
                     <h4 class="list-group-item-heading">{{program.name}}</h4>
                     <p class="list-group-item-text">{{program.description}}</p>
                 </a>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{selectedProgram.name}}</h3>
                 </div>
                 <div class="panel-body">
-                    <div>{{selectedProgram.description}}</div>
-                    <button type="button" class="btn btn-success">
-                        <span>Скачать</span>
-                        <small>Версия {{selectedProgram.version}}</small>
-                    </button>
+                    <div>
+                        <p>{{selectedProgram.description}}</p>
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                            <span>Скачать</span>
+                            <span class="badge">{{selectedProgram.version}}</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                Hello, {{userDetails.login}} (<b>{{userDetails.name}}</b>)!
-            </div>
-            <form>
-                <div class="form-group">
-                    <label for="loginEdit">Логин</label>
-                    <input type="text" class="form-control" id="loginEdit" placeholder="Введите логин" ng-model="userDetails.login">
-                </div>
-                <div class="form-group">
-                    <label for="nameEdit">Имя</label>
-                    <input type="text" class="form-control" id="nameEdit" placeholder="Введите имя" ng-model="userDetails.name">
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
-            </form>
         </div>
     </div>
 </div>
