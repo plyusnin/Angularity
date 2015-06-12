@@ -8,5 +8,12 @@
 <div>
     Hello, {{userDetails.login}} (<b>{{userDetails.name}}</b>)!
 </div>
+<div>
+    <ul>
+        <li ng-repeat="program in programs">
+            <b>{{program.name}}</b> (v.{{program.version}})
+        </li>
+    </ul>
+</div>
 </body>
 </html>
